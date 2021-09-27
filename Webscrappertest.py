@@ -13,8 +13,9 @@ nextbut= True
 
 file1 = open("LTBE.txt", "w", encoding='utf8')
 
-#url = 'https://ranobes.net/up/dragon-chain-ori/899985-1.html'
-url = 'https://hostednovel.com/11635/novel/little-tyrant-doesnt-want-to-meet-with-a-bad-end/ltbe-chapter-1'
+
+#input a url of website u want to scrap
+url = ''
 browser = webdriver.Chrome()
 #browser.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
 browser.get(url)
@@ -34,12 +35,14 @@ while(nextbut):
         #title = browser.find_element_by_class_name('h4').text
         title = browser.find_element_by_class_name('text-center').text
         
+        #contents of the novel
         #content = browser.find_element_by_class_name('text').text
         content = browser.find_element_by_id('chapter').text
         browser.delete_all_cookies()
 
         try:
                 #browser.find_element_by_id('next').click()
+                #makes so u click next chapter.
                 browser.find_element_by_xpath('//*[@id="app"]/main/div[3]/div/div/div/div/div/div[3]/a').click()
                 
         except NoSuchElementException:
